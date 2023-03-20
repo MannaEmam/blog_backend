@@ -1,7 +1,7 @@
 from rest_framework import permissions
 
 
-class IsAdminOwnerModeratorOrReadOnly(permissions.BasePermission):
+class IsAdminOwnModOrRead(permissions.BasePermission):
     md_methods = ("GET", "PATCH")
     nu_methods = ("GET", "POST")
 
@@ -36,7 +36,7 @@ class IsAdminOwnerModeratorOrReadOnly(permissions.BasePermission):
         return False
 
 
-class IsPostOwnerCommentOwnerAdminOrReadOnly(permissions.BasePermission):
+class IsAdminOwnOrRead(permissions.BasePermission):
 
     def has_permission(self, request, view):
 
@@ -58,6 +58,20 @@ class IsPostOwnerCommentOwnerAdminOrReadOnly(permissions.BasePermission):
             return True
 
         if obj.owner == request.user:
+            return True
+
+        return False
+
+
+class IsSuperUser(permissions.BasePermission):
+
+    def has_permission(self, request, view):
+
+        if request.user.is_authenticated:
+            return True
+
+    def has_object_permission(self, request, view, obj):
+        if request.user.is_superuser:
             return True
 
         return False
