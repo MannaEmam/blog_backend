@@ -3,16 +3,17 @@ from blog.models import Post, Comment
 
 
 class PostSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source='user.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
+    comments = serializers.HyperlinkedRelatedField(many=True, view_name='comment-detail', read_only=True)
 
     class Meta:
         model = Post
-        fields = ('id', 'title', 'body', 'created', 'updated', 'user')
+        fields = ('id', 'title', 'body', 'created', 'updated', 'comments', 'owner')
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source='user.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Comment
-        fields = ('id', 'user', 'post', 'body', 'created')
+        fields = ('id', 'owner', 'post', 'body', 'created')

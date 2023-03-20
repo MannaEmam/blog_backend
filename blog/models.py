@@ -17,7 +17,7 @@ class User(AbstractUser):
     status = models.CharField(max_length=5, choices=STATUS_CHOICES, default="A")
 
     def __str__(self):
-        return f'{self.get_full_name()} : {self.email}'
+        return f'{self.username}'
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
@@ -27,7 +27,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='blogger', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
@@ -38,7 +38,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
