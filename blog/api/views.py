@@ -2,8 +2,9 @@ from blog.models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import viewsets
-from django_filters.rest_framework import DjangoFilterBackend
 from authentication.permissions.permission import IsAdminOwnModOrRead, IsAdminOwnOrRead
+from django_filters.rest_framework import DjangoFilterBackend
+from blog.utils import PostSearchFilter, PostFilterSet
 
 
 class Post(viewsets.ModelViewSet):
@@ -11,11 +12,17 @@ class Post(viewsets.ModelViewSet):
     authentication_classes = [TokenAuthentication, ]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['body', 'title', 'owner', "created"]
+    filter_backends = [DjangoFilterBackend, PostSearchFilter]
+    filterset_class = PostFilterSet
+    search_fields = ['owner__username']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({"extra_data": self.request.query_params.get('extra_data', False)})
+        return context
 
 
 class Comment(viewsets.ModelViewSet):

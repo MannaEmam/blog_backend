@@ -1,9 +1,8 @@
 from rest_framework import permissions
+from authentication.data.user import User
 
 
 class IsAdminOwnModOrRead(permissions.BasePermission):
-    md_methods = ("GET", "PATCH")
-    nu_methods = ("GET", "POST")
 
     def has_permission(self, request, view):
 
@@ -21,16 +20,13 @@ class IsAdminOwnModOrRead(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        if request.user.role == "OA":
+        if request.user.role == User.ADMIN_ROLE:
             return True
 
         if obj.owner == request.user:
             return True
 
-        if request.user.role == "MD" and request.method in self.md_methods:
-            return True
-
-        if request.user.role == "NU" and request.method in self.nu_methods:
+        if request.user.role == User.MOD_ROLE and request.method != "DELETE":
             return True
 
         return False
@@ -54,11 +50,13 @@ class IsAdminOwnOrRead(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        if request.user.role == "OA":
+        if request.user.role == User.ADMIN_ROLE:
             return True
 
         if obj.owner == request.user:
             return True
+
+        # if request.data.
 
         return False
 

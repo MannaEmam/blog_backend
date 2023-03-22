@@ -7,5 +7,5 @@ class User:
     }
     ROLE_CHOICES = ((role, data[0]) for role, data in ROLES.items())
 
-    ADMIN_ROLES = ("SA", "OA", "MD", "NU")
-
+    ADMIN_ROLE = "OA"
+    MOD_ROLE = "MD"

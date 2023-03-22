@@ -2,6 +2,7 @@ from rest_framework import generics
 from authentication.api import serializers as auth_serializers
 from blog.models import User
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from authentication.permissions.permission import IsAdminOwnOrRead
 
 
 class RegisterUser(generics.CreateAPIView):
