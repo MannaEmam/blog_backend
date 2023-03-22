@@ -1,5 +1,5 @@
 from blog.models import Post, Comment
-from .serializers import PostSerializer, CommentSerializer
+from blog.api import PostSerializer, CommentSerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import viewsets
 from authentication.permissions.permission import IsAdminOwnModOrRead, IsAdminOwnOrRead
@@ -14,10 +14,13 @@ class Post(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     filter_backends = [DjangoFilterBackend, PostSearchFilter]
     filterset_class = PostFilterSet
-    search_fields = ['owner__username']
+    search_fields = ['author__username']
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(author=self.request.user)
+
+    def perform_update(self, serializer):
+        serializer.save(updated_by=self.request.user)
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
@@ -32,4 +35,4 @@ class Comment(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(created_by=self.request.user)

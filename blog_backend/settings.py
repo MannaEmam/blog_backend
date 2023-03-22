@@ -107,7 +107,7 @@ REST_FRAMEWORK = {
     ),
 
     'DEFAULT_PERMISSION_CLASSES': [
-        'authentication.permissions.permission.IsSuperUser',
+        'authentication.permissions.permission.IsAdmin',
     ],
 }
 

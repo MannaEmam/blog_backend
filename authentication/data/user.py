@@ -1,11 +1,12 @@
 class User:
     ROLES = {
-        "SA": ("Super Admin", 1),
-        "OA": ("Only Admin", 2),
-        "MD": ("Moderator", 3),
-        "NU": ("Normal User", 4),
+        "AD": ("Admin", 1),
+        "MD": ("Moderator", 2),
+        "US": ("User", 3),
     }
     ROLE_CHOICES = ((role, data[0]) for role, data in ROLES.items())
 
-    ADMIN_ROLE = "OA"
+    ADMIN_ROLE = "AD"
     MOD_ROLE = "MD"
+    USER_ROLE = "US"
+

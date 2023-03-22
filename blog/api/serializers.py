@@ -3,15 +3,18 @@ from blog.models import Post, Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
+
+    created_by = serializers.ReadOnlyField(source='created_by.username')
 
     class Meta:
         model = Comment
-        fields = ('id', 'post', 'body', 'owner', 'created')
+        fields = ('id', 'post', 'created_by', 'body', 'created_at', 'updated_at')
 
 
 class PostSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
+
+    author = serializers.ReadOnlyField(source='author.username')
+    updated_by = serializers.ReadOnlyField(source='updated_by.username')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -23,5 +26,5 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('id', 'title', 'body', 'owner', 'created', 'updated')
+        fields = ('id', 'title', 'article', 'author', 'created_at', 'updated_at', 'updated_by')
 
