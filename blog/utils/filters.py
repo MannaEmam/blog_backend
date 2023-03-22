@@ -9,11 +9,11 @@ class PostSearchFilter(SearchFilter):
 
 
 class PostFilterSet(FilterSet):
-    body = CharFilter(
+    article = CharFilter(
         field_name='article', lookup_expr='icontains'
     )
     created = DateFilter(
-        field_name='created_at', lookup_expr='icontains'
+        field_name='created', lookup_expr='icontains'
     )
     title = CharFilter(
         field_name='title', lookup_expr='icontains'

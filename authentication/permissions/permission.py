@@ -15,7 +15,7 @@ class IsAdminOwnModOrRead(permissions.BasePermission):
             return True
 
     def has_object_permission(self, request, view, obj):
-
+        
         if request.user.is_superuser:
             return True
 
@@ -59,6 +59,7 @@ class IsAdminOwnOrRead(permissions.BasePermission):
         try:
             post_id = request.query_params.get('post')
             post_author = Post.objects.get(id=post_id).author
+
         except:
             post_author = None
 
