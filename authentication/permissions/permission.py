@@ -15,7 +15,7 @@ class IsAdminOwnModOrRead(permissions.BasePermission):
             return True
 
     def has_object_permission(self, request, view, obj):
-        
+
         if request.user.is_superuser:
             return True
 
@@ -69,11 +69,42 @@ class IsAdminOwnOrRead(permissions.BasePermission):
         return False
 
 
+class IsAdminOrOwner(permissions.BasePermission):
+
+    def has_permission(self, request, view):
+
+        # if request.user.role == User.ADMIN_ROLE:
+        #     return True
+        #
+        # if request.user.is_superuser:
+        #     return True
+
+        if request.user.is_authenticated:
+            return True
+
+    def has_object_permission(self, request, view, obj):
+
+        if request.user.is_superuser:
+            return True
+
+        if request.user.role == User.ADMIN_ROLE:
+            return True
+
+        if request.user == obj and request.method != "DELETE":
+            print('its')
+            return True
+
+        return False
+
+
 class IsAdmin(permissions.BasePermission):
 
     def has_permission(self, request, view):
 
-        if request.user.is_authenticated:
+        if request.user.role == User.ADMIN_ROLE:
+            return True
+
+        if request.user.is_superuser:
             return True
 
     def has_object_permission(self, request, view, obj):

@@ -22,3 +22,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('blog/', include('blog.urls')),
 ]
+
+urlpatterns += [
+    path('api-auth/', include('rest_framework.urls')),
+]

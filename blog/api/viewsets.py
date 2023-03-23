@@ -12,7 +12,7 @@ from rest_framework.response import Response
 class Post(viewsets.ModelViewSet):
     permission_classes = [IsAdminOwnModOrRead, ]
     authentication_classes = [TokenAuthentication, ]
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-created_at')
     serializer_class = PostSerializer
     filter_backends = [DjangoFilterBackend, PostSearchFilter]
     filterset_class = PostFilterSet
@@ -45,7 +45,7 @@ class Post(viewsets.ModelViewSet):
 class Comment(viewsets.ModelViewSet):
     permission_classes = [IsAdminOwnOrRead, ]
     authentication_classes = [TokenAuthentication, ]
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.all().order_by('created_at')
     serializer_class = CommentSerializer
 
     def perform_create(self, serializer):

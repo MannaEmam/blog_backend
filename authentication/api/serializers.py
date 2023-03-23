@@ -3,10 +3,10 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     password = serializers.CharField(write_only=True)
-    posts = serializers.HyperlinkedRelatedField(many=True, view_name='post-detail', read_only=True)
+    posts = serializers.StringRelatedField(many=True, read_only=True)
 
     def create(self, validated_data):
 
