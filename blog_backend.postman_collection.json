@@ -1,0 +1,797 @@
+{
+	"info": {
+		"_postman_id": "99b72d67-519e-4445-a9bd-c8ec22f87263",
+		"name": "blog_backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16328160"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/auth/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 372a4c5f927412473cf392db1378a08fd63c6036",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/auth/user-list/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"user-list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token c4f9b97f5dfdab8060893ca7cc3aa8b1185edaa3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/auth/user-data/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"user-data",
+								""
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "\"b36ccbe45bf421e56180a489eea9e679d5ba5d34\"",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 8d315ab25e253b0d46655f888a272354986f91f0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"first_name\": \"xyz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/auth/user-data/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"user-data",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 5cdb06b1aaedd4c75b028dac142b4812a21c69ae",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"AD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/auth/user-data/6/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"user-data",
+								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin dashborad",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "blog",
+			"item": [
+				{
+					"name": "create post",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 8d315ab25e253b0d46655f888a272354986f91f0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"second\",\r\n    \"article\":\"second\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail  post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 5442aa7720fc29a102ed4c8cb88a8c55d1ff268b",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 10,\r\n    \"title\": \"ASD\",\r\n    \"body\": \"This is second post\",\r\n    \"owner\": \"test2\",\r\n    \"created\": \"2023-03-21T20:15:02.534313\",\r\n    \"updated\": \"2023-03-21T20:15:02.534313\",\r\n    \"comments\": [\r\n        {\r\n            \"id\": 17,\r\n            \"post\": 9,\r\n            \"body\": \"test1 com on test post 1\",\r\n            \"owner\": \"test1\",\r\n            \"created\": \"2023-03-21T20:16:04.073046\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/10/?extra_data=comments",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								"10",
+								""
+							],
+							"query": [
+								{
+									"key": "extra_data",
+									"value": "comments"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/?author=test1&title=asd&article=second&created_at=2023-03-21",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								""
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "test1"
+								},
+								{
+									"key": "title",
+									"value": "asd"
+								},
+								{
+									"key": "article",
+									"value": "second"
+								},
+								{
+									"key": "created_at",
+									"value": "2023-03-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update post",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 372a4c5f927412473cf392db1378a08fd63c6036",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"n\",\r\n    \"article\": \"updated by admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete post",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "headerPrefix",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "token 5cdb06b1aaedd4c75b028dac142b4812a21c69ae",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/5/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trending post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/trending-post/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								"trending-post",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "create comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4bfe23fb0666e80a9708e70907e08d8c64b15636",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post\": \"1\",\r\n    \"body\": \"test1 commenting on test first blog\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/comments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list comment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 8d315ab25e253b0d46655f888a272354986f91f0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post\": \"1\",\r\n    \"body\": \"test1 commenting on test first blog\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/comments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail comment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 0ce07c56a5eee0a78cbf2b5d939724e1c85c939e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/comments/17/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"comments",
+								"17",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comment update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 088b666cbe10031ab5562868eb3b6fffa8f9c33a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post\": 9,\r\n    \"body\": \"test1 editing his comment again\",\r\n    \"created\": \"2023-03-20T22:32:01.309249\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/comments/17/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"comments",
+								"17",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comment delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 372a4c5f927412473cf392db1378a08fd63c6036",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/comments/7/?post=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"comments",
+								"7",
+								""
+							],
+							"query": [
+								{
+									"key": "post",
+									"value": "1",
+									"description": "when post author will want to delete comment on his post then this query parameter will require"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

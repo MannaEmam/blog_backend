@@ -4,7 +4,6 @@ User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     password = serializers.CharField(write_only=True)
     posts = serializers.StringRelatedField(many=True, read_only=True)
 
@@ -22,5 +21,3 @@ class UserSerializer(serializers.ModelSerializer):
             'id', 'username', 'password',
             'first_name', 'last_name', 'email', 'role', 'posts',
         )
-
-
