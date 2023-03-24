@@ -5,6 +5,14 @@ from blog.models import Post
 
 class IsAdminOwnModOrRead(permissions.BasePermission):
 
+    """Anonymous user can see post list and post detail
+
+        Admin and superuser has every access to any post.
+        User has access to do everything with his post.
+        Moderator has access like a user additional access
+        to update others post.
+    """
+
     def has_permission(self, request, view):
 
         if request.user.is_authenticated:
@@ -34,6 +42,12 @@ class IsAdminOwnModOrRead(permissions.BasePermission):
 
 
 class IsAdminOwnOrRead(permissions.BasePermission):
+    """An authenticated user can create comment.
+
+        Only comment owner can update his comment.
+        Admin, superuser has access to delete any comment on any post.
+        User can delete his comment along with comments in his post.
+    """
     no_acc = ["PUT", "PATCH"]
 
     def has_permission(self, request, view):
@@ -70,6 +84,13 @@ class IsAdminOwnOrRead(permissions.BasePermission):
 
 class IsAdminOrUser(permissions.BasePermission):
 
+    """Anybody is allowed to register as a user.
+
+        Any authenticated user can see others user details.
+        User can update his own data but can't delete.
+        Admin and superuser has every access.
+    """
+
     def has_permission(self, request, view):
 
         if request.user.is_authenticated:
@@ -91,6 +112,7 @@ class IsAdminOrUser(permissions.BasePermission):
 
 class IsAdmin(permissions.BasePermission):
 
+    """ Only Admin and superuser has access."""
     def has_permission(self, request, view):
 
         if request.user.is_authenticated:

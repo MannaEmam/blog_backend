@@ -24,12 +24,19 @@ class Post(viewsets.ModelViewSet):
     def perform_update(self, serializer):
         serializer.save(updated_by=self.request.user)
 
+    """To count the view of post."""
     def retrieve(self, request, *args, **kwargs):
         post = self.get_object()
         post.view_count = post.view_count + 1
         post.save(update_fields=("view_count",))
         return super().retrieve(request, *args, **kwargs)
 
+    """Returns top five viewed post as trending post,
+        
+        url_path allows to override the default path
+        name 'function' name to custom name.
+    
+    """
     @action(detail=False, methods=['GET'], url_path='trending-post')
     def trending_post(self, request):
         queryset = self.queryset.order_by('-view_count')[:5]

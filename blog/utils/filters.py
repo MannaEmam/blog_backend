@@ -6,15 +6,15 @@ from blog.models import Post
 
 class PostSearchFilter(SearchFilter):
     """Overriding default parameter from search to author."""
-    
+
     search_param = 'author'
 
 
 class PostFilterSet(FilterSet):
-    """As default DjangoFilter works only for exact match,
+    """As default DjangoFilter works only for
 
-     overriding to enable partial search for
-     these fields 'article', 'created' 'title'.
+        exact match, overriding to enable partial search
+        for these fields 'article', 'created' 'title'.
 
     """
     article = CharFilter(

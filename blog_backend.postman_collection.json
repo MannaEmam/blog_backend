@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -52,7 +52,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"username\": \"user11\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -91,7 +91,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "token 372a4c5f927412473cf392db1378a08fd63c6036",
+								"value": "token f8b91ebeb03e712593e0dcea7645ab1baf9bc806",
 								"type": "text"
 							}
 						],
@@ -100,7 +100,7 @@
 							"raw": "{\r\n    \r\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/auth/user-list/",
+							"raw": "http://127.0.0.1:8000/auth/user-list/?extra_data=posts",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -113,6 +113,12 @@
 								"auth",
 								"user-list",
 								""
+							],
+							"query": [
+								{
+									"key": "extra_data",
+									"value": "posts"
+								}
 							]
 						}
 					},
@@ -131,7 +137,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "token c4f9b97f5dfdab8060893ca7cc3aa8b1185edaa3",
+								"value": "token f8b91ebeb03e712593e0dcea7645ab1baf9bc806",
 								"type": "text"
 							}
 						],
@@ -140,7 +146,7 @@
 							"raw": "{\r\n    \r\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/auth/user-data/",
+							"raw": "http://127.0.0.1:8000/auth/user-data/4/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -152,14 +158,8 @@
 							"path": [
 								"auth",
 								"user-data",
+								"4",
 								""
-							],
-							"query": [
-								{
-									"key": "token",
-									"value": "\"b36ccbe45bf421e56180a489eea9e679d5ba5d34\"",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -175,13 +175,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "token 8d315ab25e253b0d46655f888a272354986f91f0",
+								"value": "token 372a4c5f927412473cf392db1378a08fd63c6036",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n     \"first_name\": \"xyz\"\r\n}",
+							"raw": "{\r\n     \"first_name\": \"lkj\",\r\n     \"role\" : \"US\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -218,7 +218,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "token 5cdb06b1aaedd4c75b028dac142b4812a21c69ae",
+								"value": "token 8d315ab25e253b0d46655f888a272354986f91f0",
 								"type": "text"
 							}
 						],
@@ -232,7 +232,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/auth/user-data/6/",
+							"raw": "http://127.0.0.1:8000/auth/user-data/9/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -244,7 +244,7 @@
 							"path": [
 								"auth",
 								"user-data",
-								"6",
+								"9",
 								""
 							]
 						}
@@ -274,13 +274,77 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "token 8d315ab25e253b0d46655f888a272354986f91f0",
+								"value": "token b44c07092c4068845ba55c9c27185c1a2e93f7d1",
+								"description": "user1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "token ea4d61012d98fa0406ae0b0a67d9302ad58fd840",
+								"description": "2",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "token 39916e376df1cdcf41b22fb76ec6e47a8a99afef",
+								"description": "3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "token e8bf8a138e89ee10802a8e4ee09618a65d65490b",
+								"description": "4",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "token e8bf8a138e89ee10802a8e4ee09618a65d65490b",
+								"description": "5",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "token f45b62a31654fefacc287eae3b47390c8d22162c",
+								"description": "6",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "token e5ab170ef8b5339fe41afb7af7d0c5e06e5a7191",
+								"description": "7",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "token 4de666721533d9b1b91ef6718630ce798312c5db",
+								"description": "8",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "token d978c6a9b62ad589d67f6b6c046c6d3e1164400d",
+								"description": "9",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "token b93fab6c3e5b2c0ecdb42b82c649f6b8f49d29ec",
+								"description": "10",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"second\",\r\n    \"article\":\"second\"\r\n}",
+							"raw": "{\r\n    \"title\": \"sfadfgsdfg\",\r\n    \"article\":\"sfgsfgwefwef\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -313,7 +377,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "extra_data",
+								"value": "comments",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -337,6 +407,13 @@
 								"blog",
 								"posts",
 								""
+							],
+							"query": [
+								{
+									"key": "extra_data",
+									"value": "comments",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -355,8 +432,9 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "token 5442aa7720fc29a102ed4c8cb88a8c55d1ff268b",
-								"type": "text"
+								"value": "token 8d315ab25e253b0d46655f888a272354986f91f0",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -369,7 +447,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/blog/posts/10/?extra_data=comments",
+							"raw": "http://127.0.0.1:8000/blog/posts/1/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -381,13 +459,19 @@
 							"path": [
 								"blog",
 								"posts",
-								"10",
+								"1",
 								""
 							],
 							"query": [
 								{
 									"key": "extra_data",
-									"value": "comments"
+									"value": "comments",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "test",
+									"disabled": true
 								}
 							]
 						}
@@ -412,7 +496,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/blog/posts/?author=test1&title=asd&article=second&created_at=2023-03-21",
+							"raw": "http://127.0.0.1:8000/blog/posts/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -429,19 +513,23 @@
 							"query": [
 								{
 									"key": "author",
-									"value": "test1"
+									"value": "user1",
+									"disabled": true
 								},
 								{
 									"key": "title",
-									"value": "asd"
+									"value": "afhd",
+									"disabled": true
 								},
 								{
 									"key": "article",
-									"value": "second"
+									"value": "eyryer",
+									"disabled": true
 								},
 								{
 									"key": "created_at",
-									"value": "2023-03-21"
+									"value": "2023-03-22",
+									"disabled": true
 								}
 							]
 						}
@@ -587,13 +675,58 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "token 4bfe23fb0666e80a9708e70907e08d8c64b15636",
+								"value": "token b44c07092c4068845ba55c9c27185c1a2e93f7d1",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "token ea4d61012d98fa0406ae0b0a67d9302ad58fd840",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "token 39916e376df1cdcf41b22fb76ec6e47a8a99afef",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "token e8bf8a138e89ee10802a8e4ee09618a65d65490b",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "token e8bf8a138e89ee10802a8e4ee09618a65d65490b",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "token f45b62a31654fefacc287eae3b47390c8d22162c",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "token e5ab170ef8b5339fe41afb7af7d0c5e06e5a7191",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "token de666721533d9b1b91ef6718630ce798312c5db",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "token d978c6a9b62ad589d67f6b6c046c6d3e1164400d",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "token b93fab6c3e5b2c0ecdb42b82c649f6b8f49d29ec",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"post\": \"1\",\r\n    \"body\": \"test1 commenting on test first blog\"\r\n}",
+							"raw": "{\r\n    \"post\": \"1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -629,7 +762,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "token 8d315ab25e253b0d46655f888a272354986f91f0",
+								"value": "token f8b91ebeb03e712593e0dcea7645ab1baf9bc806",
 								"type": "text"
 							}
 						],
