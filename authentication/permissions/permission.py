@@ -1,6 +1,5 @@
 from rest_framework import permissions
 from authentication.data.user import User
-from rest_framework import serializers
 from blog.models import Post
 
 
@@ -69,15 +68,9 @@ class IsAdminOwnOrRead(permissions.BasePermission):
         return False
 
 
-class IsAdminOrOwner(permissions.BasePermission):
+class IsAdminOrUser(permissions.BasePermission):
 
     def has_permission(self, request, view):
-
-        if request.user.role == User.ADMIN_ROLE:
-            return True
-
-        if request.user.is_superuser:
-            return True
 
         if request.user.is_authenticated:
             return True
@@ -91,7 +84,6 @@ class IsAdminOrOwner(permissions.BasePermission):
             return True
 
         if request.user == obj and request.method != "DELETE":
-
             return True
 
         return False
@@ -101,18 +93,12 @@ class IsAdmin(permissions.BasePermission):
 
     def has_permission(self, request, view):
 
-        if request.user.role == User.ADMIN_ROLE:
-            return True
+        if request.user.is_authenticated:
 
-        if request.user.is_superuser:
-            return True
+            if request.user.role == User.ADMIN_ROLE:
+                return True
 
-    def has_object_permission(self, request, view, obj):
+            if request.user.is_superuser:
+                return True
 
-        if request.user.is_superuser:
-            return True
 
-        if request.user.role == User.ADMIN_ROLE:
-            return True
-
-        return False
