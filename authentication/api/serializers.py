@@ -1,12 +1,24 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from authentication.data import User as user_data
+from blog.api import PostSerializer
+
 User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
-    posts = serializers.StringRelatedField(many=True, read_only=True)
+    """Add fields if query param value exists."""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        posts = PostSerializer(read_only=True, many=True)
+        fields = dict()
+        fields['posts'] = posts
+
+        extra_data = self.context['request'].query_params.getlist('extra_data')
+        if extra_data is not None:
+            for data in extra_data:
+                if data in fields:
+                    self.fields.update({data: fields[data]})
 
     def create(self, validated_data):
 
@@ -31,9 +43,11 @@ class UserSerializer(serializers.ModelSerializer):
             pass
         return data
 
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
         fields = (
             'id', 'username', 'password',
-            'first_name', 'last_name', 'email', 'role', 'posts',
+            'first_name', 'last_name', 'email', 'role',
         )
