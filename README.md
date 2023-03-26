@@ -1,8 +1,5 @@
 # blog_backend_jukto_interview_2023
 
-# blog_backend_jukto_interview_2023
-
-
 To run the project successfully at first you have to install all that are in requirements.txt file and run a mysql server.
 When all setup is completed then create a database named blog_backend and run the following command for database connection.
 
@@ -12,7 +9,7 @@ now this command for running server, **runserver --settings=blog_backend.develop
 
 Once all are set.
 
-# Anonymous or registered user
+## Anonymous or registered user
 
 An Anonymous can see all posts and their detail by hitting these endpoint "/blog/posts/", "/blog/posts/post_id".
 
