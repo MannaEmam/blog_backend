@@ -1,4 +1,4 @@
-# blog_backend_jukto_interview_2023
+# blog_backend
 
 To run the project successfully at first you have to install all that are in requirements.txt file and run a mysql server.
 When all setup is completed then create a database named blog_backend and run the following command for database connection.
