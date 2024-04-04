@@ -7,7 +7,7 @@ When all setup is completed then create a database named blog_backend and run th
 You can either import data(blog_backend_mysql_data) or create data from your own.
 now this command for running server, **runserver --settings=blog_backend.development **
 
-This project aims to build a blog API using DRF, which will allow users to browse, create, update and delete posts and comment on posts. The API will be built on top of a Django backend and will follow RESTful principles for easy integration with front-end frameworks.
+This project built using Django Rest Framework. which will allow users to browse, create, update and delete posts and comment on posts. The API was build on top of a Django backend and followed RESTful principles for easy integration with front-end frameworks.
 Features:
 1. User authentication and authorization using a token authentication system.
 2. Three types of user roles are admin,moderator, user.
